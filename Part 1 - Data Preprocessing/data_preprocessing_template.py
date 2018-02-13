@@ -21,3 +21,9 @@ X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 sc_y = StandardScaler()
 y_train = sc_y.fit_transform(y_train)"""
+
+#taking care of missing data
+from sklearn.preprocessing import Imputer
+imputer = Imputer(missing_values = 'NaN', strategy = 'mean', axis = 0)
+imputer = imputer.fit(X[:, 1:3])
+X[:, 1:3] = imputer.transform(X[:, 1:3])
